@@ -1,9 +1,11 @@
 clc;
 clear all;
 close all;
+
 % Variables used for Discharging circuit of the railgun
 global Vinit u0 ur lc lpr Wr hc hr rho Ac Ar c Staticfrictionconstant
 global Massofprojectile g theta Vx0 Vy0 A Cd Rho Wpr
+
 Vinit = 565; % Charging voltage
 u0 = 4*3.14*10^(-7); % permeability
 ur = 1; % Relative permeability
@@ -20,8 +22,10 @@ Staticfrictionconstant = 0.5; % Static friction constant
 Massofprojectile = 0.1; % Mass of projectile
 g = 9.81; % Gravitational acceleration
 theta = 45*pi/180; % Angle of launch
+
 % Code for Discharging circuit of railgun
 sim('Final_Railgun_discharging_model')
+
 % Plots of discharging circuit important parameters
 figure(1)
 subplot(3,1,1)
