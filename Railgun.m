@@ -1,6 +1,6 @@
-clc;
-clear all;
-close all;
+clc
+clear
+close all
 
 % Variables used for Discharging circuit of the railgun
 global Vinit u0 ur lc lpr Wr hc hr rho Ac Ar c Staticfrictionconstant
@@ -18,6 +18,7 @@ rho = 1.68*10^(-8); % Resistivity of conductor
 Ac = (3.14*(1)^2/4)*(10^(-4)); % Area of circuit
 Ar = 0.001; % Area of rail
 c = 2.2*10^(-1); % Capacitance
+
 Staticfrictionconstant = 0.5; % Static friction constant
 Massofprojectile = 0.1; % Mass of projectile
 g = 9.81; % Gravitational acceleration
@@ -30,7 +31,6 @@ sim('Final_Railgun_discharging_model')
 figure(1)
 subplot(3,1,1)
 plot(t,iLout,'Linewidth',1.5)
-59
 set(gca,'fontsize',12)
 title('(a)')
 xlabel('time (s)')
@@ -66,17 +66,23 @@ title('(b)')
 xlabel('time (s)')
 ylabel('v (m/s)')
 grid on
+
+%%
+
 % Variables used for projectile trajectory with air drag
 Wpr = 0.1; % Width of the projectile
 A = 0.005; % Area of the projectile
 Rho = 1.225; % Density of air
 Cd = 0.1; % drag coefficient of bullet
-60
+
 % Code for projectile trajectory with air drag
-V = vout(end); % velocity of the projectile at start
+%V = vout(end); % velocity of the projectile at start
+V = 100;
+theta = 45;
 Vx0 = V*cos(theta); % x-axis component of velocity at start
 Vy0 = V*sin(theta); % y-axis component of velocity at start
-sim('Projectile_trajectory_with_air_drag')
+
+sim('trajectory')
 % Plot of the trajectory with air drag
 figure(3)
 plot(x,y,'Linewidth',1.5)
@@ -85,5 +91,6 @@ xlabel('distance traveled by projectile (m)')
 ylabel('height (m)')
 ylim([0 710])
 grid on
+
 Target_location = x(end)
 Copper_Loss = mean(CuLoss)
